@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@16.7.0-alpha.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.7.0-alpha.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    function Btn(props) {
+        return <button
+            style={{
+                backgroundColor: "tomato",
+                color: "white",
+                padding: "10px 20px",
+                border:0,
+                borderRadius:10
+            }}
+        >{props.banana}</button>;
+    }
+    function App() {
+        return (
+            <div>
+                <Btn banana="Save Changes" /> 
+                <Btn banana="Continue" />
+            </div>
+        )
+    }
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+</script>
+</html>
