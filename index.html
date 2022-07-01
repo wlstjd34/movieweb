@@ -15,8 +15,10 @@
 <script src="https://unpkg.com/react-dom@16.7.0-alpha.0/umd/react-dom.development.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-    function Btn(props) {
+    function Btn({text, changeValue}) {
+        console.log(`${text} rendered`)
         return <button
+            onClick={changeValue}
             style={{
                 backgroundColor: "tomato",
                 color: "white",
@@ -24,13 +26,16 @@
                 border:0,
                 borderRadius:10
             }}
-        >{props.banana}</button>;
+        >{text}</button>;
     }
+    const MemorizedBtn = React.memo(Btn);
     function App() {
+        const [value, setValue] = React.useState("Save Changes");
+        const changeValue = () => setValue("Revert Changes");
         return (
             <div>
-                <Btn banana="Save Changes" /> 
-                <Btn banana="Continue" />
+                <MemorizedBtn text={value} changeValue={changeValue} /> 
+                <MemorizedBtn text="Continue" />
             </div>
         )
     }
